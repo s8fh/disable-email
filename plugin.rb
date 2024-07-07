@@ -1,4 +1,4 @@
-# name: disable-email-verification
+# name: disable-email
 # about: Removes verification requirement for user registration
 # version: 1.0.0
 # authors: Discourse
@@ -7,7 +7,7 @@ after_initialize do
   module AutoActivationPlugin
     require_dependency 'users_controller'
     require_dependency 'user'
-    # if !SiteSetting.disable_email_verification
+    # if !SiteSetting.disable_email
     #   puts "Email verification is enabled"
     # else
     #   puts "Email verification is disabled"
@@ -15,7 +15,7 @@ after_initialize do
 
     User.class_eval do
       def create_email_token
-        email_tokens.create(email: email) unless SiteSetting.disable_email_verification
+        email_tokens.create(email: email) unless SiteSetting.disable_email
       end
     end
 
@@ -24,7 +24,7 @@ after_initialize do
 
       def modify_user_params(attrs)
         merge_fields = {ip_address: request.ip}
-        merge_fields.merge!(active: true) if SiteSetting.disable_email_verification
+        merge_fields.merge!(active: true) if SiteSetting.disable_email
         attrs.merge!(merge_fields)
         attrs
       end
