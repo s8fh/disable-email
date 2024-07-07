@@ -1,4 +1,4 @@
 users:
-  disable_email_verification:
+  disable_email:
     client: true
     default: false
