@@ -1,8 +1,7 @@
-# name: disable-email-verification-discourse
-# about: A plugin to disable email verification in Discourse
-# version: 0.0.2
-# authors: Coder Gautam
-# url: https://github.com/codergautam/disable-email-verification-discourse
+# name: disable-email-verification
+# about: Removes verification requirement for user registration
+# version: 1.0.0
+# authors: Discourse
 
 after_initialize do
   module AutoActivationPlugin
